@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+      function Test() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          reject('error!') //reject 模拟出错
+        }, 2000)
+      })
+    }
+// 如果你不想让错误中断后面代码的执行，可以提前截留住错误，像下面
+    async function asyncTest() {
+
+        console.log('start')
+        await Test().catch(err=>{
+          console.log(err)
+        }) // 这里返回了错误
+        console.log('end')  //这句会执行
+    }
+    asyncTest();
+  </script>
+</body>
+</html>

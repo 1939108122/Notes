@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Test () {
+      return new Promise((resolve, reject)=> {
+        setTimeout(()=>{
+          resolve('success!')
+        },2000)
+      })
+    }
+
+    async function asyncTest() {
+      console.log('start')
+      console.log(await Test())
+      
+      console.log('end')
+    }
+
+    asyncTest();
+    // 结果是 start, 两秒后 先后输出succcess 和 end (其实是先success后end，因为console.log(end) 时间太快，所以基本同时输出)
+    // async await 用同步思维解决异步问题
+  </script>
+</body>
+</html>

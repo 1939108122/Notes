@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Test1() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('success1!')
+        }, 1000)
+      })
+    }
+
+    function Test2() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('success2!')
+        }, 2000)
+      })
+    }
+
+    async function asyncTest1() {
+      console.log('asyncTest1 start:',Date.now())
+      let a = await Test1()
+      let b = await Test2() // 不依赖 res1 的值
+      console.log('asyncTest1 end:', Date.now())
+    }
+
+    async function asyncTest2() {
+      console.log('asyncTest2 start:',Date.now())
+      let [a, b] = await Promise.all([Test1(), Test2()])
+      console.log('asyncTest2 end:', Date.now())
+    }
+
+    // asyncTest1(); 
+    asyncTest2();
+
+    // 在浏览器分别执行， 发现asyncTest1()方法耗时 3002比 asyncTest2()里面的多个async&await操作时间 2003耗时
+    // 所以用Promise.all 省时间一点
+  </script>
+</body>
+
+</html>
