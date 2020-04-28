@@ -22,7 +22,7 @@ var foo = function() {
   var baz = bar();
   console.log(baz());
 };
-foo();
+foo(); 
 
 
 // 一般而言，在bar()函数执行完成后，局部变量local将会随着作用域的销毁而被回收，
