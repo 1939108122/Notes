@@ -45,3 +45,11 @@ var b = Object.create(a,  { p1: {
 }})
 console.log(b.p1)
 
+
+
+function A () {
+  this.name = 'abc'
+  
+}
+
+var a = new A()
