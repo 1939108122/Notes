@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 'use strict'
+    function func () {
+      console.log(this)
+    }
+    func.call(1) // Number {1} 非严格  严格为 1
+    // func.call('1')  //  String {"1"} 非严格   严格为 1
+    // func.call(null)  //Windows 非严格  严格为 null
+  </script>
+</body>
+</html>
