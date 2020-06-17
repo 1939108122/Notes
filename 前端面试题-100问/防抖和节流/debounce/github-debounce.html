@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" id="input"/>
+  <script>
+    function sayHi() {
+      console.log('防抖成功！')
+    }
+
+    function debounce (fn) {
+      let timeout = null
+     
+      return function () {
+        // let context = this
+        clearTimeout(timeout)
+        timeout = setTimeout(()=>{
+          fn.apply(this, arguments)
+        }, 1000)
+      }
+    }
+    
+    let input = document.getElementById('input')
+    input.addEventListener('input', debounce(sayHi))
+
+  </script>
+</body>
+</html>
