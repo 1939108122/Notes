@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root" style="height: 200px; background-color: #ccc; color: red; text-align: center; font-size: 80px;">
+
+  </div>
+
+  <script>
+    // 使用时间戳
+    let root = document.getElementById('root')
+    let num = 1
+    function count () {
+      root.innerHTML = num++
+      console.log(this)
+    }
+
+    function throttle(fn, time) {
+      let previous = 0
+
+     return function () {
+        var context = this
+        var args = arguments
+        let now = +new Date()
+    
+        if (now - previous > time)
+        {
+          fn.apply(context, args)
+          // fn()
+          previous = now
+        }
+     }
+    }
+    root.onmousemove = throttle(count, 1000)
+  </script>
+</body>
+</html>

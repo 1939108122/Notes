@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root" style="height: 200px; background-color: #ccc; color: red; text-align: center; font-size: 80px;">
+
+  </div>
+
+  <script>
+    // 使用定时器
+    let root = document.getElementById('root')
+    let num = 1
+    function count () {
+      root.innerHTML = num++
+      // console.log(this)
+    }
+
+   // 第二版
+function throttle(func, wait) {
+    var timeout;
+    var previous = 0;
+
+    return function() {
+        context = this;
+        args = arguments;
+        // console.log(timeout)
+        if (!timeout) {
+            timeout = setTimeout(function(){  //timeout不用等三秒才赋值，直接赋值
+                timeout = null;
+                func.apply(context, args)
+            }, wait)
+        }
+
+    }
+}
+    root.onmousemove = throttle(count, 3000)
+  </script>
+</body>
+</html>
