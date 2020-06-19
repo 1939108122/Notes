@@ -80,4 +80,93 @@ const ws = new WeakSet(b);
 
 ```
 #### Map
+>ES6 提供了 Map 数据结构。它类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。也就是说，Object 结构提供了“字符串—值”的对应，Map 结构提供了“值—值”的对应，是一种更完善的 Hash 结构实现。如果你需要“键值对”的数据结构，Map 比 Object 更合适。
 
+1. 方法
+
+  （1）**size 属性**
+  ```js
+  const map = new Map();
+  map.set('foo', true);
+  map.set('bar', false);
+
+  map.size // 2
+  ```
+
+  (2) **Map.prototype.set(key, value)**
+  set方法设置键名key对应的键值为value，然后返回整个 Map 结构。如果key已经有值，则键值会被更新，否则就新生成该键。
+
+  ```js
+  const m = new Map();
+
+  m.set('edition', 6)        // 键是字符串
+  m.set(262, 'standard')     // 键是数值
+  m.set(undefined, 'nah')    // 键是 undefined
+  ```
+  get、has、delete...
+
+2. 与其他数据结构的互相转换
+   （1）Map 转为数组
+   ```js
+   const myMap = new Map()
+    .set(true, 7)
+    .set({foo: 3}, ['abc']);
+    [...myMap]
+    // [ [ true, 7 ], [ { foo: 3 }, [ 'abc' ] ] ]
+   ```
+  （3）Map 转为对象
+
+  如果所有 Map 的键都是字符串，它可以无损地转为对象。
+  ```js
+    function strMap (map) {  
+    let obj = Object.create(null)
+    for(let [k, v] of map)
+    {
+      obj[k] = v
+    }
+    return obj
+  }
+
+  const myMap = new Map()
+  myMap.set('true', 1)
+  myMap.set('false', 2)
+
+  console.log(strMap(myMap))  //{ true: 1, false: 2 }
+  ```
+
+#### WeakMap
+
+  WeakMap与Map的区别有两点。
+
+  1. 首先，WeakMap只接受对象作为键名（null除外），不接受其他类型的值作为键名。
+  ```js
+  const map = new WeakMap();
+    map.set(1, 2)
+    // TypeError: 1 is not an object!
+    map.set(Symbol(), 2)
+    // TypeError: Invalid value used as weak map key
+    map.set(null, 2)
+    // TypeError: Invalid value used as weak map key
+  ```
+  2. 其次，WeakMap的键名所指向的对象，不计入垃圾回收机制。
+  3. 没有遍历操作
+
+
+
+### 总结
+Set
+1.成员不能重复
+2.只有键值，没有键名，有点类似数组。
+3. 可以遍历，方法有add, delete,has
+weakSet
+
+成员都是对象
+成员都是弱引用，随时可以消失。 可以用来保存DOM节点，不容易造成内存泄漏
+不能遍历，方法有add, delete,has
+Map
+本质上是健值对的集合，类似集合
+可以遍历，方法很多，可以干跟各种数据格式转换
+weakMap
+1.只接受对象作为键名（null除外），不接受其他类型的值作为键名
+健名所指向的对象，不计入垃圾回收机制
+不能遍历，方法同get,set,has,delete
