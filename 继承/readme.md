@@ -1,4 +1,4 @@
-#### 原型链继承
+#### 原型链继承1
 ```js
 function father() {
     this.faName = 'father';
@@ -16,7 +16,24 @@ child.prototype.getchName = function() {
     console.log(this.chName);
 };
 ```
+#### 原型链继承2（感觉不错）
+```js
+function A() {
+  this.a = 'hello';
+}
 
+function B() {
+  A.call(this);
+  this.b = 'world';
+}
+
+B.prototype = Object.create(A.prototype, {
+  constructor: { value: B, writable: true, configurable: true }
+});
+
+let b = new B();
+
+```
 #### 借用构造函数继承（经典继承）
 ```js
 function Parent() {
