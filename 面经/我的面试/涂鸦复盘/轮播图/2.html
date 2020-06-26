@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>简易版轮播图</title>
+</head>
+<style>
+  .list {
+    width: 800px;
+    height: 400px;
+    position: relative;
+  }
+  .item{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+    transition: all .5s;
+  }
+  .item.active{
+    opacity: 1;
+    /* z-index: 10; */
+  }
+</style>
+<body>
+    <div class="list">
+      <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593165271937&di=bc689ce3fd1d911cdf620e0086845473&imgtype=0&src=http%3A%2F%2F02img.shaqm.com%2Fmobile%2F20171006%2F4831cc4de1ad746d0f8758fdaaac4d2b.jpeg" alt="" class="item active">
+      <img src="http://c2.hoopchina.com.cn/uploads/star/event/images/181025/455012b0b316a3c29e6dde75e44a1c9d0b2bbe63.jpg" alt="" class="item">
+      <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2519856324,3948921566&fm=26&gp=0.jpg" alt="" class="item">
+      <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593165323459&di=2e7a9ab0c43c496d58239323fc0547a4&imgtype=0&src=http%3A%2F%2Fsports.cnr.cn%2Fncsport%2Ftp%2F20151218%2FW020151218438723967258.jpg" alt="" class="item">
+      <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3652118357,195454906&fm=26&gp=0.jpg" alt="" class="item">
+    </div>
+
+  <script>
+    var imgs = document.getElementsByClassName('item')
+    var index = 0  //图片下标
+
+    function clearActive() {
+      for(var i =0; i < imgs.length; i++)
+      {
+        imgs[i].className = 'item'
+      }
+    }
+    function lunbo() {
+      clearActive()
+      imgs[index].className = 'item active'
+    }
+
+    function circle () {  //判断下标是否越界，越界再从第一张开始
+      if(index < 4)
+      {
+        index++
+      }
+      else {
+        index = 0
+      }
+      lunbo()
+    }
+    setInterval(function(){
+      circle()
+    },2000)
+  </script>
+</body>
+</html>

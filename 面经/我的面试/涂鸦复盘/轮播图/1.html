@@ -3,45 +3,188 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script src="./vue-2.4.0.js"></script>
+  <title>完整版轮播图</title>
 </head>
 <style>
-  html, body,#box{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: cornflowerblue;
+  .wrap{
+    width: 800px;
+    height: 400px;
+    position: relative;
+  }
+  .list{
+    width: 800px;
+    height: 400px;
+    list-style: none;
+    position: relative;
+    padding-left: 0;
+  }
+  .item {
     width: 100%;
     height: 100%;
-    position: relative;
-    
-  }
-  #box2{
+    color: white;
+    font-size: 50px;
     position: absolute;
-    width: 300px;
-    height: 300px;
+    opacity: 0;
+    transition: all .5s;
+  }
+  /* .item:nth-child(1){
+    background-color: blue;
+  }
+  .item:nth-child(2){
+    background-color: red;
+  }
+  .item:nth-child(3){
+    background-color: green;
+  }
+  .item:nth-child(4){
+    background-color: pink;
+  }
+  .item:nth-child(5){
+    background-color: yellow;
+  } */
+  .item.active{
+    opacity: 1;
+    z-index: 10;
+
+  }
+  .btn{
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: 150px;
+    z-index: 50;
+  }
+  #goPre{
+    left: 0px;
+  }
+  #goNext{
+    right: 0px;
+  }
+
+  .pointList {
+    list-style: none;
+    padding-left: 0px;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1000;
+  }
+  .point {
+    width: 7px;
+    height: 7px;
+    background-color: rgba(0,0,0,0.4);
+    border-radius: 100%;
+    float: left;
+    margin-right: 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgba(255,255,255,0.6);
+  }
+  .point.active {
+    border-color: rgba(255,0,0,0.4);
   }
 </style>
 <body>
-  <div id="box">
-    <div id="box2">
-      <img :src= alt="">
+  <div class="wrap">
+    <!-- <ul class="list">
+      <li class="item active">0</li>
+      <li class="item">1</li>
+      <li class="item">2</li>
+      <li class="item">3</li>
+      <li class="item">4</li>
+    </ul> -->
+    <div class="list">
+      <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593165271937&di=bc689ce3fd1d911cdf620e0086845473&imgtype=0&src=http%3A%2F%2F02img.shaqm.com%2Fmobile%2F20171006%2F4831cc4de1ad746d0f8758fdaaac4d2b.jpeg" alt="" class="item active">
+      <img src="http://c2.hoopchina.com.cn/uploads/star/event/images/181025/455012b0b316a3c29e6dde75e44a1c9d0b2bbe63.jpg" alt="" class="item">
+      <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2519856324,3948921566&fm=26&gp=0.jpg" alt="" class="item">
+      <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593165323459&di=2e7a9ab0c43c496d58239323fc0547a4&imgtype=0&src=http%3A%2F%2Fsports.cnr.cn%2Fncsport%2Ftp%2F20151218%2FW020151218438723967258.jpg" alt="" class="item">
+      <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3652118357,195454906&fm=26&gp=0.jpg" alt="" class="item">
     </div>
+    <ul class="pointList">
+      <li class="point active" data-index="0"></li>
+      <li class="point"  data-index="1"></li>
+      <li class="point"  data-index="2"></li>
+      <li class="point"  data-index="3"></li>
+      <li class="point"  data-index="4"></li>
+    </ul>
+    <button type="button" id="goPre" class="btn"><</button>
+    <button type="button" id="goNext" class="btn">></button>
   </div>
   <script>
-    var vm = ({
-      el: '#box',
-      data: {
-         imgArr = ['https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1111159001,935361713&fm=26&gp=0.jpg',
-    'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3253738014,4094484242&fm=26&gp=0.jpg',
-    'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1004062630,309098072&fm=26&gp=0.jpg'
-  ]
-      },
-      methods: {
-
+    var items = document.getElementsByClassName('item') //图片
+    var points = document.getElementsByClassName('point')//点
+    var goPreBtn = document.getElementById('goPre')
+    var goNextBtn = document.getElementById('goNext')
+    var index = 0  //当前展示的图片下标,和小圆点
+    var time = 0 //定时器参数
+    function clearActive() {  //清除其他的 active
+      for(var i =0; i< items.length; i++)
+      {
+        items[i].className = 'item' //图片
       }
+
+      for(var i =0; i< points.length; i++)
+      {
+        points[i].className = 'point'//点
+      }
+    }
+
+    function goIndex() {
+      clearActive()
+      items[index].className = 'item active'
+      points[index].className = 'point active'
+    }
+
+    function goNext() {
+      if(index < 4)
+      {
+        index++;
+      }
+      else{
+        index = 0
+      }
+      goIndex()
+    }
+    function goPre() {
+      if (index == 0)
+      {
+        index = 4
+      }
+      else {
+        index--
+      }
+      goIndex()
+    }
+
+    goNextBtn.addEventListener('click',function(){
+      goNext()//实现点击跳到下一张
     })
+
+    goPreBtn.addEventListener('click',function(){
+      goPre()//实现点击跳到前一张
+    })
+
+    for(var i = 0; i < points.length; i++)
+    {
+      points[i].addEventListener('click', function() {
+        var pointIndex = this.getAttribute('data-index')
+        index = pointIndex
+        goIndex()
+        time = 0
+        
+      })
+    }
+    // 定时器
+
+    setInterval(function() {
+      time++
+      if (time === 20)
+      {
+        goNext()
+        time = 0
+      }
+    }, 100)
+
   </script>
 </body>
 </html>
