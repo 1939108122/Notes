@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>清除浮动</title>
+  <style>
+     .floatBox1 {
+    width: 100px;
+    height: 100px;
+    float: left;
+    border: 1px solid #333;
+    background: red;
+  }
+
+  .floatBox2 {
+    width: 100px;
+    height: 100px;
+    float: left;
+    border: 1px solid #333;
+    background: red;
+  }
+
+  .box {
+    overflow: hidden;
+    background: yellow;
+    border: 1px solid #333;
+  }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="floatBox1"></div>
+    <div class="floatBox2"></div>
+  </div>
+</body>
+</html>
+
+<!-- floatBox1 和 floatBox2 都加了 float但是会影响到 父元素的宽高，这就是副作用， 所以在父元素box加了 overflow：hidden，
+创建一个BFC把 两个子元素包裹起来，他就是一个独立的范围，所以保证不给外界造成影响，所以父元素自适应高度包裹子元素 -->

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>边距重叠测试</title>
+  <style>
+    .box {
+      background-color: yellow;
+    }
+
+    .box1,
+    .box2 {
+      padding: 0;
+      width: 100px;
+      height: 100px;
+      margin: 20px 0;
+      background-color: red;
+      color: #fff;
+    }
+    .container {
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="container">
+      <div class="box1">我是盒子一号</div>
+    </div>
+    <div class="container">
+      <div class="box2">我是盒子二号</div>
+    </div>
+  </div>
+</body>
+</html>
+
+<!-- 没在盒子一二号都加一个container容器之前，两盒子之间外边距本应该是40px， 但是只有20px这就是外边距重叠
+都加了一个属性为 overflow: hidden 的container后，都单独给这两个盒子创建了一个BFC 避免重叠外边距 -->
