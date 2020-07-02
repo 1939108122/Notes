@@ -1,6 +1,6 @@
 ## 自我介绍
-## js类型   加问： 判断js类型，  typeof()
-## 作用域
+## js类型   加问： 判断js类型，  typeof() 和 Object.prototype.toString.call()区别
+## 作用域  闭包  闭包实例  闭包缺点
 ## vue和React区别
 ## 跨域
 ## HTTPS协议
@@ -10,4 +10,7 @@
 ## js本地存储(cookies, session localStorage)
 ## 如何减小打包体积
 ## call apply bind
-## js怎么实现面向对象
+## js怎么实现面向对象(封装、继承、多态)  封装就是只能通过对象来访问方法
+## js回收机制
+
+
