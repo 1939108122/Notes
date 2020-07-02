@@ -144,4 +144,4 @@ console.log(child)
 ## Es5和Es6的继承区别？
 
 Es5是先创建子类的实例this，在把父类的this指向子类的this Func.call(this)
-Es6是先创建父类的实例对象this，再用super继承
+Es6是先创建父类的实例对象this(用super)  再用子类的构造函数修改this
