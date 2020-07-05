@@ -14,3 +14,47 @@ function A (a) {
 
 3. 当调取一个对象的属性时，会先在本身查找，若无，就根据 `proto` 找到构造原型，若无，继续往上找。最后会到达顶层`Object prototype`，它的 `proto` 指向null，均无结果则返回undefined，结束。
 由 `proto` **串起的路径就是『原型链』**。
+
+
+
+## 题目
+
+```js
+var A = function() {};
+A.prototype.n = 1;
+var b = new A();
+A.prototype = {
+  n: 2,
+  m: 3
+}
+var c = new A();
+
+console.log(b.n);
+console.log(b.m);
+
+console.log(c.n);
+console.log(c.m);
+
+
+//answer； 1  undefined  2  3
+```
+
+
+```js
+function A() {}
+function B(a) {
+    this.a = a;
+}
+function C(a) {
+    if (a) {
+        this.a = a;
+    }
+}
+A.prototype.a = 1;
+B.prototype.a = 1;
+C.prototype.a = 1;
+
+console.log(new A().a); // 1
+console.log(new B().a); // undefined
+console.log(new C(2).a); // 2
+```
