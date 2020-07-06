@@ -12,6 +12,9 @@
 
 >他们俩之间的差别在于参数的区别，call和aplly的第一个参数都是要改变上下文的对象，而call从第二个参数开始以参数列表的形式展现，apply则是把除了改变上下文对象的参数放在一个数组里面作为它的第二个参数。
 
+## call、apply 和 bind的区别，call、apply改变完this指向后会执行目标函数func，并将目标函数的返回值返回，没有则为undefined，
+## 而bind并不会执行目标函数，返回一个原函数的拷贝，并拥有指定的 this 值和初始参数。
+
 ```js
 fn.call(obj, arg1, arg2, arg3...);
 fn.apply(obj, [arg1, arg2, arg3...]);
