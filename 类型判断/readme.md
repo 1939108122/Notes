@@ -61,3 +61,7 @@ a instanceof Array //true
 
 ## typeof原理， 不同对象在底层都表示为二进制，在JavaScript中二进制前三位都为0则判断类型为object，null的二进制全为0，所以
 typeof null 为 object
+
+
+## 注意：为什么要用Object.prototype.toString.call([1,2,3]) 而不是 [1,2,3].toString() 判断呢？
+因为toString是Object原型上的方法，但是被Array、Function实例重写了，所以每次使用toString时会优先使用重写的方法，比如[].toString()会使用Array重写的toString方法，返回由数组里每个值组成的字符串，所以要想判断类型，就要使用 Object原型链上的toString
