@@ -139,7 +139,16 @@ class Son extends Father{
 
 let child = new Son('father',20, '小白')
 console.log(child)
+
+
+//原型链
+Son.__proto__ === Father //true
+Son.prototype.__proto__ === Father.prototype //true
+Father.__proto__ === Function.prototype // true
+Function.prototype.__proto__ === Object.prototype //true
 ```
+
+
 
 ## Es5和Es6的继承区别？
 
