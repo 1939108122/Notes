@@ -1,0 +1,1 @@
+图片懒加载、路由懒加载（React lazy）、骨架屏、CDN、GZIP、SSR（NEXT.js）
