@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var name = '天后'
+    let c = {
+      name: '偏爱',
+      bar() {
+        console.log(this.name) //偏爱
+
+        function foo() {
+        console.log(this.name) //天后    要想输出偏爱，只需将函数改成箭头函数
+        }
+        foo();
+      }
+    }
+
+    c.bar();
+  </script>
+</body>
+</html>
