@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="doma">doma</div>
+  <div id="domb">domb</div>
+  <div id="domc">domc</div>
+  <script>
+    const DomA = document.getElementById('doma');
+    const DomB = document.getElementById('domb');
+    const DomC = document.getElementById('domc');
+
+    // reflow ?次
+    // reflow 3次
+    function time() {
+      DomA.style.width = DomA.offsetWidth + 1 + 'px';
+      DomB.style.width = DomA.offsetWidth + 1 + 'px'; //1次
+      DomC.style.width = DomA.offsetWidth + 1 + 'px'; //2次
+
+
+      // 第三次是对上面三行代码完毕后，重新计算受影响的DOM结构， 最后重排一次
+    }
+    setTimeout(() => {
+      time();
+    }, 2000);
+
+  </script>
+</body>
+</html>
