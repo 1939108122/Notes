@@ -84,7 +84,7 @@ componentDidUpdate(prevProps, prevState) {
       提高性能。
   3. render： 用diff算法对比前后虚拟dom，并修改真实Dom
   4. snapShotBeforeUpdate: 读取dom信息返回给componentDidUpdate使用
-  5. componentDidUpdate： 组件更新之后立即执行。
+  5. componentDidUpdate： 组件更新之后立即执行。会进行执行一些`getDerivedStateFromProps`和要更新props后的一些回调函数，
 
   UnMounting（卸载）阶段
   componentWillUnmount： 在组件即将被移除的时候执行，用于清理内存空间。
