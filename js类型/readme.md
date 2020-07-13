@@ -9,3 +9,14 @@ ECMAScript中的数据类型可分为两种：
 引用类型：引用类型的值是对象，保存在堆内存中，而栈内存存储的是对象的变量标识符以及对象在堆内存中的存储地址
 
 typeof null === 'object'  //true
+
+
+## Symbol
+使用Symbol来做对象属性名，不让对象属性的名称因为相同产生冲突
+
+```js
+let mySymbol = Symbol()
+let a = {
+  [mySymbol]: 'hello'
+} 
+```
