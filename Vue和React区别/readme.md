@@ -13,3 +13,7 @@ https://juejin.im/post/5b8b56e3f265da434c1f5f76#heading-1
 5. redux 和 vuex  最大区别  redux使用的不可变数据   vuex可以修改数据
 
 总的来说 react更适合中大型项目，上手较难 鲁棒性，  vue适合小型项目 灵活 不那么遵守规则 易上手 渐进式
+
+
+vue更切合web开发者的更熟悉的模板和特性，采用 html+JavaScript+css的组合方式，react在于函数式编程的独有风格。
+在响应式数据中，vue通过修改数据就可以直接反应到界面更新，而react需要调用setState
