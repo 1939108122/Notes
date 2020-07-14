@@ -49,3 +49,5 @@ console.log(quickSort(array, 0, array.length - 1))
 
 
 // 时间复杂度为 O(nlogn) 最差情况为当你想从小到大排序，数组却是从大到小排序，递归次数变成n，时间复杂度为O(n2)
+
+// https://juejin.im/post/5d75f77e5188253e4b2f0d3d
