@@ -1,0 +1,12 @@
+{
+  "name": "Cross-domain",
+  "version": "1.0.0",
+  "description": "浏览器的同源策略：只有当两个URL协议、域名、端口完全相同时，就叫做同源，就可以进行读写资源(请求数据，localStorage、cookies读取)。\r 只要协议、域名、端口有一个不同，就可以叫做跨域。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
