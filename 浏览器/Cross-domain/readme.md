@@ -48,3 +48,21 @@ CORS(跨域资源共享)通信其实和同源的AJAX请求没有差别，CORS需
 浏览器发现这是一个非简单请求，就会自动发送一个“预检”请求（请求方法是OPTION表明是查询）给服务器，查看是不是允许这个源请求资源，以及可以使用哪些HTTP动词和头信息字段，预检请求头除了origin还会有Access-Control-Request-Method，Access-Control-Request-Headers。如果允许的话，浏览器才会发出真正的请求给服务器，服务器接收到会响应，响应头部里面会有Access-Control-Allow-Origin表明是否允许请求源请求资源。
 
 ## http://www.ruanyifeng.com/blog/2016/04/cors.html
+
+
+## cors
+
+Accecpt-control-allow-origin
+Accept-control-allow-method
+Accept-control-allow-headers
+Accept-control-allow-credential  //允不允许携带cooikes
+Accept-control-allow-max-age     //预检请求可以缓存的时间
+
+
+
+## 强缓存和协商缓存
+
+强缓存在响应头设置 Cache-control 为 max-age=xx秒 ，前端第一次请求状态码为200，在max-age时间内再次请求就会从本地缓存取出来，
+本地缓存有的 分为memory-cache 和 disk-cache 一个是内存， 一个是硬盘
+
+协商缓存  看一下前一次后端是否返回 etag， 返回了就取下etag值，以一个 if-none-match传给后端

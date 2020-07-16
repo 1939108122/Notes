@@ -7,12 +7,13 @@
 </head>
 <body>
   <script>
-    // function callback(data) {
-    //   comsole,log('收到数据', data)
-    // }
+    function callback(data) {
+      console.log('收到数据', data)
+    }
   </script>
   <!-- <img src="http://neteasecloudmusicapi.zhaoboy.com/search?keywords=%E6%B5%B7%E9%98%94%E5%A4%A9%E7%A9%BA" alt=""> -->
   <script src="http://localhost:8090/api"></script>
   <!-- script标签接受响应的js，所以这个接口的返回值是 hello world 不是js 自然会报错，所以jsonp就是让服务器返回一个js就可以解析得到数据 -->
+  <script src="http://localhost:8090/abc.js"></script>
 </body>
 </html>
