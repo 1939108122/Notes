@@ -4,8 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    div {
+      border:black 1px solid;
+    }
+    #box1 {
+      position: absolute;
+      /* top: 100px; */
+    }
+    #box2 {
+      position: relative;
+      top: 100px;
+      /* transform: translateY(100px); */
+    }
+    /* absolute会移出正常文档流，relative不会 如果对box2做左移，之前的位置还在，不会对其他元素影响，absolute会影响 */
+    /* box1 定位为absolute，他的块级元素特性都没有了 */
+
+    #box4 {
+      display: none;
+    }
+
+    #box5 {
+      visibility: hidden;
+    } 
+    /* display none 其实也会脱离正常文档流，visibility不会 所以他两之间区别也是同上 */
+  </style>
 </head>
 <body>
-  div#
+  <div id="box1">1</div>
+  <div id="box2">2</div>
+  <div id="box3">3</div>
+  <div id="box4">4</div>
+  <div id="box5">5</div>
 </body>
 </html>
