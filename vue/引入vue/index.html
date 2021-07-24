@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app" v-bind:title="message">
+        鼠标悬停在此可显示我对你想说的话噢~
+        <p>{{now}}</p>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: '胡雯菁是个大笨猪~ 略'
+            },
+            computed: {
+                now: function() {
+                    return Date.now();
+                }
+            }
+        })
+    </script>
+</body>
+</html>
