@@ -27,3 +27,12 @@ function foo() {
 }
 foo(); //undefined
 ```
+使用let则不会进行变量提升 会报错
+```js
+// let 报错
+function foo() {
+    console.log(a);
+    let a = '1';
+}
+foo(); // ReferenceError: Cannot access 'a' before initialization
+```

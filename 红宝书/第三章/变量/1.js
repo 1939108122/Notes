@@ -13,3 +13,10 @@ function foo() {
     var a = '1';
 }
 foo(); //undefined
+
+// let 报错
+function foo() {
+    console.log(a);
+    let a = '1';
+}
+foo(); // ReferenceError: Cannot access 'a' before initialization
