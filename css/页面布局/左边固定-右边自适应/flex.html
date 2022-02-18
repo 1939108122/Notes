@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        body {
+            min-height: 1000px;
+        }
+        .box {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+        .box1 {
+            width: 200px;
+            height: 100%;
+            background-color: red;
+        }
+        .box2 {
+            flex: 1;
+            height: 100%;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="box1">左边固定</div>
+        <div class="box2">右边自适应</div>
+    </div>
+</body>
+</html>
