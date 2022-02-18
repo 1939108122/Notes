@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box">dwqdwqdwqdqddwqw的萨达萨收到多少打多少</div>
+    <div onclick="moreInfo()">更多</div>
+    <div onclick="shouqi()">收起</div>
+</body>
+<script>
+    function moreInfo() {
+        console.log(1111);
+        var dom = document.getElementById('box');
+        dom.style.maxHeight = 66 + 'px';
+    }
+    function shouqi() {
+        console.log(1111);
+        var dom = document.getElementById('box');
+        dom.style.maxHeight = 0;
+    }
+</script>
+</html>
